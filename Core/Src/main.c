@@ -101,27 +101,27 @@ int main(void) {
 
 	while (1) {
 		adc = HAL_ADC_GetValue(&hadc1);
-		float voltage = adc * 3.3 / 4095;
+		float voltage = (float) adc * 3.3 / 4095;
 		float temp_voltage;
 		uint32_t p_entera, p_frac;
-		char str_entera[1];
+		char str_entera[2];
 		char str_frac[3];
 
 		p_entera = (uint32_t) voltage;
 		temp_voltage = (voltage - p_entera) * 1000;
 		p_frac = (uint32_t) temp_voltage;
-		sprintf(str_entera, "%1d", p_entera);
+		sprintf(str_entera, "%2d", p_entera);
 		sprintf(str_frac, "%3d", p_frac);
-
+		/*
 		lcd_clear();
 		lcd_puts("Voltage:", 8);
 
 		lcd_gotoxy(1, 2);
-		lcd_puts(str_entera, 1);
+		lcd_puts(str_entera, 2);
 		lcd_putc('.');
 		lcd_puts(str_frac, 3);
 
-		HAL_Delay(1000);
+		HAL_Delay(1000); */
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
